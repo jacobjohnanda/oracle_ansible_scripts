@@ -3,4 +3,5 @@
   name: Delay
   tasks:
   - pause:
-    seconds: 10
+      seconds: 5
+
