@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  name: Inspect Snapmirror
+  tasks:
+  - name: Inspect Snapmirror
+    na_ontap_info:
+      state: info
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+      gather_subset:
+      - snapmirror_info
+    register: netapp
+  - debug:
+      msg: "The Snapmirror values are  {{ item.key }} is {{ item.value.source_location }} ({{ item.value.destination_location }})"
+    loop: "{{ lookup('dict', netapp.ontap_info.snapmirror_info) }}"
