@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  name: Create ONTAP/ONTAP SnapMirror
+  tasks:
+  - name: Create ONTAP/ONTAP SnapMirror
+    na_ontap_snapmirror:
+      state: present
+      source_volume: "{{ src_vol_name }}"
+      destination_volume: "{{ dst_vol_name }}"
+      source_vserver: "{{ src_vserver }}"
+      destination_vserver: "{{ dst_vserver }}"
+      schedule: "{{ schedule }}"
+      policy: "{{ policy }}"
+      max_transfer_rate: "{{ max_transfer_rate }}"
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+#    ignore_errors: yes
+#    when: "'No element by given name style' in command_result.stderr"
+  - debug:
+      msg: "The Mirror Relationship has been created and initialized."
