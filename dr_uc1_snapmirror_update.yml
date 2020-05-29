@@ -2,7 +2,7 @@
 - hosts: localhost
   collections:
     - netapp.ontap
-  name: Volume Action
+  name: Create ONTAP/ONTAP SnapMirror Update
   tasks:
   - name: Create ONTAP/ONTAP SnapMirror Update
     na_ontap_snapmirror:
