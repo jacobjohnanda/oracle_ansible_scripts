@@ -1,0 +1,51 @@
+##############################################
+###### Disaster Recovery Use Case 1 Variables
+###### dr-uc1-*
+##############################################
+#Please Enter Destination Cluster
+dst_hostname: 10.195.51.149
+
+#Please Enter Destination Username
+dst_username: admin
+
+#Please Enter Destination Password
+dst_password: netapp1!
+
+#Please Enter Destination SVM
+dst_vserver: smog1
+
+#Please Enter Destination Aggregate
+dst_aggr: aggr_1
+
+#Please Enter Destination Volume Name
+dst_vol_name: dst_ansi3
+
+#Please Enter Destination Volume Size
+dst_vol_size: 10
+
+#Please Enter Source SVM
+src_vserver: smog1
+
+#Please Enter Source Volume Name
+src_vol_name: ansi3
+
+#Please Enter Destination Snapmirror Schedule
+schedule: hourly
+
+#Please Enter Destination Snapmirror Policy
+policy: MirrorAllSnapshots
+
+#Please Enter Destination max Transfer
+max_transfer_rate: 1000
+
+#Please Enter Destination Export Policy Name
+export_policy_name: ansi3
+
+#Please Enter Destination  Export Policy Client
+client_match: 0.0.0.0/0
+
+#Please Enter Destination  Export Policy RO Rule
+ro_rule: any
+
+#Please Enter Destination  Export Policy RW Rule
+rw_rule: none
