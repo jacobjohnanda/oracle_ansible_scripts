@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  name: Create ONTAP/ONTAP SnapMirror Break
+  tasks:
+  - name: Create ONTAP/ONTAP SnapMirror Break
+    na_ontap_snapmirror:
+      state: present
+      relationship_state: broken
+      source_volume: "{{ src_vol_name }}"
+      destination_volume: "{{ dst_vol_name }}"
+      source_vserver: "{{ src_vserver }}"
+      destination_vserver: "{{ dst_vserver }}"
+      schedule: "{{ schedule }}"
+      policy: "{{ policy }}"
+      max_transfer_rate: "{{ max_transfer_rate }}"
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+  - debug:
+      msg: "The Mirror Relationship has been broken."
