@@ -1,2 +1,6 @@
-- pause:
+---
+- hosts: localhost
+  name: Delay
+  tasks:
+  - pause:
     seconds: 10
