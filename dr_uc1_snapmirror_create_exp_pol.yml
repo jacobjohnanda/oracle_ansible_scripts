@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  name: Create Export Policy
+  tasks:
+  - name: Create Export Policy
+    na_ontap_export_policy:
+      state: present
+      name: "{{ export_policy_name }}"
+      vserver: "{{ dst_vserver }}"
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+  - name: Setup default rules
+    na_ontap_export_policy_rule:
+      state: present
+      policy_name: "{{ export_policy_name }}"
+      vserver: "{{ dst_vserver }}"
+      client_match: "{{ client_match }}"
+      ro_rule: "{{ ro_rule }}"
+      rw_rule: "{{ rw_rule }}"
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+  - debug:
+      msg: "The Export Policy has been created."
