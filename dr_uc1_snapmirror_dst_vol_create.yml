@@ -19,7 +19,7 @@
       password: "{{ dst_password }}"
       https: true
       validate_certs: false
-    ignore_errors: yes
-    when: "'No element by given name style' in command_result.stderr"
+#    ignore_errors: yes
+#    when: "'No element by given name style' in command_result.stderr"
   - debug:
       msg: "The Destination Volume has been created"
