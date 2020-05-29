@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  name: Destination Volume Mount
+  tasks:
+  - name: Destination Volume Mount
+    na_ontap_volume:
+      state: present
+      name: "{{ dst_vol_name }}"
+      vserver: "{{ dst_vserver }}"
+      policy: "{{ export_policy_name }}"
+      junction_path: "/{{dst_vol_name }}"
+      hostname: "{{ dst_hostname }}"
+      username: "{{ dst_username }}"
+      password: "{{ dst_password }}"
+      https: true
+      validate_certs: false
+  - debug:
+      msg: "The Destination Volume has been mounted."
